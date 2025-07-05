@@ -1,129 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Expert Advice Chatbot</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f1f5f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .chatbot-container {
-      width: 350px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .chat-header {
-      background-color: #2563eb;
-      color: #fff;
-      padding: 1rem;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .chat-window {
-      flex-grow: 1;
-      padding: 1rem;
-      overflow-y: auto;
-      max-height: 400px;
-    }
-
-    .message {
-      margin: 0.5rem 0;
-    }
-
-    .user {
-      text-align: right;
-      color: #1d4ed8;
-    }
-
-    .bot {
-      text-align: left;
-      color: #111827;
-    }
-
-    .chat-input {
-      display: flex;
-      border-top: 1px solid #e5e7eb;
-    }
-
-    .chat-input input {
-      flex-grow: 1;
-      border: none;
-      padding: 1rem;
-      font-size: 1rem;
-      outline: none;
-    }
-
-    .chat-input button {
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      padding: 1rem;
-      cursor: pointer;
-    }
-  </style>
+  <title>Career Compass Chat</title>
 </head>
 <body>
+  <h2>Ask something:</h2>
+  <input type="text" id="userInput" placeholder="Type here...">
+  <button onclick="sendToBackend()">Send</button>
 
-  <div class="chatbot-container">
-    <div class="chat-header">Expert Advice Bot</div>
-    <div class="chat-window" id="chat-window">
-      <div class="message bot">Hi! I'm here to answer your career questions. Ask me anything!</div>
-    </div>
-    <div class="chat-input">
-      <input type="text" id="userInput" placeholder="Ask a question..." />
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </div>
+  <p><strong>Bot Reply:</strong> <span id="responseArea"></span></p>
 
   <script>
-    function sendMessage() {
-      const input = document.getElementById('userInput');
-      const message = input.value.trim();
-      if (message === '') return;
+    function sendToBackend() {
+      const userMessage = document.getElementById("userInput").value;
 
-      const chatWindow = document.getElementById('chat-window');
-
-      // Display user message
-      const userMsg = document.createElement('div');
-      userMsg.className = 'message user';
-      userMsg.textContent = message;
-      chatWindow.appendChild(userMsg);
-
-      input.value = '';
-
-      // Simulated bot response
-      setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'message bot';
-
-        if (message.toLowerCase().includes('engineering')) {
-          botMsg.textContent = 'Engineering is a great choice! Focus on physics and math. Do you have a specific branch in mind?';
-        } else if (message.toLowerCase().includes('career') || message.toLowerCase().includes('future')) {
-          botMsg.textContent = 'Think about what you enjoy doing the most. I can help you explore different career paths!';
-        } else if (message.toLowerCase().includes('doctor')) {
-          botMsg.textContent = 'To become a doctor, focus on biology and prepare for medical entrance exams. MBBS is a common route.';
-        } else {
-          botMsg.textContent = 'That’s interesting! I recommend talking to professionals, or exploring it through internships or research.';
-        }
-
-        chatWindow.appendChild(botMsg);
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-      }, 700);
+      fetch("http://localhost:5000/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: userMessage })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("responseArea").innerText = data.reply;
+      })
+      .catch(err => {
+        document.getElementById("responseArea").innerText = "Error connecting to backend";
+        console.error(err);
+      });
     }
   </script>
-
 </body>
 </html>
