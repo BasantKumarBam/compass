@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Career Compass</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Career Compass</h1>
+    <form id="careerForm">
+      <label>Name:</label>
+      <input type="text" id="name" required>
+
+      <label>Phone Number:</label>
+      <input type="tel" id="phone" pattern="[0-9]{10}" required placeholder="Enter 10-digit number">
+
+      <label>Email:</label>
+      <input type="email" id="email" required placeholder="example@gmail.com">
+
+      <label>Select your interests:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="interest" value="Tech"> Technology</label>
+        <label><input type="checkbox" name="interest" value="Art"> Art & Design</label>
+        <label><input type="checkbox" name="interest" value="Science"> Science</label>
+        <label><input type="checkbox" name="interest" value="Business"> Business</label>
+        <label><input type="checkbox" name="interest" value="Health"> Health & Medicine</label>
+      </div>
+
+      <label>Favorite Subjects:</label>
+      <select id="subject">
+        <option value="Math">Math</option>
+        <option value="Biology">Biology</option>
+        <option value="Physics">Physics</option>
+        <option value="Computer">Computer</option>
+        <option value="Economics">Economics</option>
+        <option value="English">English</option>
+      </select>
+
+      <label>Which describes you best?</label>
+      <select id="personality">
+        <option value="Creative">Creative</option>
+        <option value="Logical">Logical</option>
+        <option value="Helpful">Helpful</option>
+        <option value="Leader">Leader</option>
+        <option value="Curious">Curious</option>
+      </select>
+
+      <button type="submit">Find My Career</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

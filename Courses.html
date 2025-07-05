@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Info Button Page</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #5297c2 0%, #f0f4f8 50%, #50f0f0 100%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 0;
+        }
+        .site-logo {
+            position: fixed;
+            top: 24px;
+            left: 32px;
+            z-index: 100;
+            width: 90px;
+            height: auto;
+            opacity: 0.96;
+            filter: drop-shadow(0 2px 8px rgba(44,62,80,0.13));
+        }
+        .college-list-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            width: 100%;
+            max-width: 900px;
+            align-items: flex-start;
+        }
+        .college-box {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(44,62,80,0.18), 0 1.5px 6px rgba(49,130,206,0.10);
+            padding: 36px 32px 28px 32px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 24px;
+            box-sizing: border-box;
+            flex: 0 0 350px;
+            align-self: flex-start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .college-box:hover {
+            transform: translateY(-6px) scale(1.025);
+            box-shadow: 0 16px 40px rgba(44,62,80,0.22), 0 2px 12px rgba(49,130,206,0.13);
+        }
+        .college-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.28;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .college-box > *:not(.college-bg) {
+            position: relative;
+            z-index: 1;
+        }
+        .college-name {
+            font-size: 2.1rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+            color: #2a4365;
+            text-shadow: 0 2px 8px rgba(49,130,206,0.08);
+        }
+        .college-contact {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-start;
+        }
+        .college-contact-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .college-contact-label {
+            font-weight: 500;
+            color: #2a4365;
+            min-width: 70px;
+        }
+        .courses-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .courses-list ul {
+            padding-left: 20px;
+        }
+        .courses-list strong {
+            color: #2563eb;
+            font-size: 1.08rem;
+        }
+        .show-btn {
+            background: linear-gradient(90deg, #6366f1 0%, #3182ce 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 28px;
+            font-size: 1.08rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 22px;
+            box-shadow: 0 2px 8px rgba(49,130,206,0.10);
+            letter-spacing: 0.5px;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+        }
+        .show-btn:hover {
+            background: linear-gradient(90deg, #4f46e5 0%, #2563eb 100%);
+            box-shadow: 0 4px 16px rgba(49,130,206,0.18);
+            transform: scale(1.04);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+        <img src="logo.png" alt="Site Logo" class="site-logo" />
+        <div class="college-list-container">
+        <!-- College 1 -->
+        <div class="college-box">
+            <img class="college-bg" src="college1.jpg" alt="College 1 Background" />
+            <div id="college-info-1">
+                <div class="college-name">Pulchowk Campus- Institute of Engineering</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:campusadmin@pcampus.edu.np">campusadmin@pcampus.edu.np</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/IOE.Pulchowk" target="_blank">facebook.com/IOE.Pulchowk</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://pcampus.edu.np" target="_blank">pcampus.edu.np</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>Bachelor of Engineering/Architecture</li>
+                        <li>Mechanical Engineering</li>
+                        <li>Chemical Engineering</li>
+                        <li>Aerospace Engineering</li>
+                        <li>Electrical Engineering</li>
+                        <li>Civil Engineering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 2 -->
+        <div class="college-box">
+            <img class="college-bg" src="college2.jpg" alt="College 2 Background" />
+            <div id="college-info-2">
+                <div class="college-name">Thapathali Campus-</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:info@tcioe.edu.np">info@tcioe.edu.np</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/share/1QPv9tebk5/" target="_blank">facebook.com/share/1QPv9tebk5/</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://tcioe.edu.np" target="_blank">tcioe.edu.np</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>Civil Engineering</li>
+                        <li>Computer Engineering</li>
+                        <li>Automobile Engineering</li>
+                        <li>Industrial Engineering</li>
+                        <li>Electronics Communication and Information Engineering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 3 -->
+        <div class="college-box">
+            <img class="college-bg" src="college3.jpg" alt="College 3 Background" />
+            <div id="college-info-3">
+                <div class="college-name">Kathmandu University- School of Engineering</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:info@ku.edu.np">info@ku.edu.np</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/kathmanduuniversity" target="_blank">facebook.com/kathmanduuniversity</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://ku.edu.np" target="_blank">ku.edu.np</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>B.E Mechanical Engineering</li>
+                        <li>Automobile Design and Manufacturing</li>
+                        <li>Hydropower Engineering</li>
+                        <li>B.Tech in AI</li>
+                        <li>Chemical and Geomatics Engineering</li>
+                        <li>Civil and Computer Engineering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 4 -->
+        <div class="college-box">
+            <img class="college-bg" src="college4.jpg" alt="College 4 Background" />
+            <div id="college-info-4">
+                <div class="college-name">Kathmandu University School of Medical Sciences</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:info@kusms.edu.np">info@kusms.edu.np</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/kusms" target="_blank">facebook.com/kusms</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://kusms.edu.np" target="_blank">kusms.edu.np</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>MBBS</li>
+                        <li>Bachelor in Dental Surgery</li>
+                        <li>B.Sc. Nursing</li>
+                        <li>Master of Physiotherapy</li>
+                        <li>B.Sc. Laboratory Technology</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 5 -->
+        <div class="college-box">
+            <img class="college-bg" src="college5.jpg" alt="College 5 Background" />
+            <div id="college-info-5">
+                <div class="college-name">Maharajgunj Medical College</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:info@mmc.tu.edu.np">info@mmc.tu.edu.np</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/hilltopmed" target="_blank">facebook.com/hilltopmed</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://hilltopmed.edu" target="_blank">hilltopmed.edu</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>MBBS</li>
+                        <li>Bachelor of Dental Surgery</li>
+                        <li>Bachelor of Physiotherapy</li>
+                        <li>B.Perf Tech Master</li>
+                        <li>Bechelor of Pharmacy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 6 -->
+        <div class="college-box">
+            <img class="college-bg" src="college6.jpg" alt="College 6 Background" />
+            <div id="college-info-6">
+                <div class="college-name">Sirjana College of Fine Arts-Kathmandu</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:contact@sunriselaw.edu">contact@sunriselaw.edu</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/sunriselaw" target="_blank">facebook.com/sunriselaw</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://sunriselaw.edu" target="_blank">sunriselaw.edu</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>Bachelor of Fine Arts</li>
+                        <li>Modern and traditional painting</li>
+                        <li>Graphic Communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 7 -->
+        <div class="college-box">
+            <img class="college-bg" src="college7.jpg" alt="College 7 Background" />
+            <div id="college-info-7">
+                <div class="college-name">Kathmandu University School of Management</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:info@kusom.edu.np">info@kusom.edu.np</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/kusom" target="_blank">facebook.com/kusom</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://kusom.edu.np" target="_blank">kusom.edu.np</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>Bachelor of Business Administration</li>
+                        <li>Bachelor of Business Information Systems</li>
+                        <li>Bachelor of Hospitality Management</li>
+                        <li>Master of Business Administration</li>
+                        <li>Master of Public Policy and Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 8 -->
+        <div class="college-box">
+            <img class="college-bg" src="college8.jpg" alt="College 8 Background" />
+            <div id="college-info-8">
+                <div class="college-name">Cosmos College of Management and Technology</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:info@cosmoscollege.edu.np">info@cosmoscollege.edu.np</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/VisitCosmos" target="_blank">facebook.com/cosmoscollege</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://cosmoscollege.edu.np" target="_blank">cosmoscollege.edu.np</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>B.E in Computer Engineering</li>
+                        <li>B.E. Information Technology</li>
+                        <li>Bachelor of Architecture</li>
+                        <li>Bachelor of Business Administration</li>
+                        <li>M.Sc. in Structural Engineering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 9 -->
+        <div class="college-box">
+            <img class="college-bg" src="college9.jpg" alt="College 9 Background" />
+            <div id="college-info-9">
+                <div class="college-name">The British College Kathmandu</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:info@thebritishcollege.edu.np">info@thebritishcollege.edu.np</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/TheBritishCollegeKathmandu" target="_blank">facebook.com/TheBritishCollegeKathmandu</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://www.thebritishcollege.edu.np" target="_blank">thebritishcollege.edu.np</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>Bsc cyber Security and Digital Forensics</li>
+                        <li>BBA Business and Management
+                        <li>BSc computing</li>
+                        <li>BSc Computer Science-AI and Data Science</li>
+                        <li>MSc Advance Computer Science</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- College 10 -->
+        <div class="college-box">
+            <img class="college-bg" src="college10.jpg" alt="College 10 Background" />
+            <div id="college-info-10">
+                <div class="college-name">St.Xavier's College Maitighar</div>
+                <div class="college-contact">
+                    <div class="college-contact-row"><span class="college-contact-label">Email:</span> <a href="mailto:ktm@sxc.edu">ktm@sxc.edu</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Facebook:</span> <a href="https://facebook.com/sxcmaitighar" target="_blank">facebook.com/sxcmaitighar</a></div>
+                    <div class="college-contact-row"><span class="college-contact-label">Website:</span> <a href="https://www.sxc.edu.np" target="_blank">sxc.edu.np</a></div>
+                </div>
+                <div class="courses-list">
+                    <strong>Courses Offered:</strong>
+                    <ul>
+                        <li>BSc-CSIT- Computer Science and Information Technology</li>
+                        <li>Bachelor of Information Technology</li>
+                        <li>BSc Microbiology</li>
+                        <li>MSc Physics</li>
+                        <li>Master of Business Studies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
